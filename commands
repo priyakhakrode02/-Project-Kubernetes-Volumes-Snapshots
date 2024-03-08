@@ -31,3 +31,55 @@ docker login
 docker push  engineerwithspecs02/my-flask:latest
 
 
+#install minikube cluster for ubuntu OS
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+
+sudo dpkg -i minikube_latest_amd64.deb
+
+minikube start
+
+#install kubectl
+
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.3/2023-11-14/bin/linux/amd64/kubectl
+
+chmod +x ./kubectl 
+
+sudo cp ./kubectl /usr/bin/
+
+mkdir data
+
+cd data/
+
+mkdir flask
+
+vim pv.yml
+
+kubectl apply -f pv.yml
+
+vim pvc.yml
+
+kubectl apply -f pvc.yml
+
+kubectl get pvckubectl get pv
+
+vim pod.yml
+
+kubectl apply -f pod.yml
+
+kubectl get pods
+
+kubectl port-forward flask-pod 8080:8080
+
+vim service.yml
+
+kubectl apply -f service.yml
+
+vim service.yml
+
+kubectl logs flask-pod
+
+kubectl get pods -o wide
+
+kubectl describe pod flask-pod
+
+
