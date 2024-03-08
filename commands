@@ -9,3 +9,25 @@ systemctl status docker
 sudo usermod -aG docker ubuntu
 
 sudo chown ubuntu /var/run/docker.sock
+
+git clone https://github.com/priyakhakrode02/project-Kubernetes-Volumes-Snapshots.git
+
+mv project-Kubernetes-Volumes-Snapshots project
+
+cd project/
+
+vim Dockerfile
+
+docker build -t my-flask .
+
+docker run -itd -p 8080:8080 my-flask:latest
+
+docker ps
+
+docker tag my-flask:latest engineerwithspecs02/my-flask:latest
+
+docker login
+
+docker push  engineerwithspecs02/my-flask:latest
+
+
