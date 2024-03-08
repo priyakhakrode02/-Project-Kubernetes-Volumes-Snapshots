@@ -1,0 +1,11 @@
+#Ubuntu OS
+
+apt install docker.io
+
+systemctl start docker
+
+systemctl status docker
+
+sudo usermod -aG docker ubuntu
+
+sudo chown ubuntu /var/run/docker.sock
