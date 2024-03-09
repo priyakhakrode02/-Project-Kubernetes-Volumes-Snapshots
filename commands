@@ -84,11 +84,27 @@ kubectl get pods -o wide
 
 kubectl describe pod flask-pod
 
+minikube addons enable volumesnapshots
+
+minikube addons list
+
 curl -LO https://github.com/kubernetes-csi/external-snapshotter/releases/download/v7.1.0/snapshot-storageclass.yaml
 
 kubectl apply -f snapshot-storageclass.yaml
 
 kubectl get storageclass
+
+vim snapshot-storageclass.yaml
+
+kubectl apply -f snapshot-storageclass.yaml
+
+kubectl get volumesnapshotclasses
+
+vim snapshot-controller.yml
+
+kubectl apply -f snapshot-controller.yml
+
+kubectl get deployment snapshot-controller -n kube-system
 
 #kubectl get crd
 
@@ -100,11 +116,27 @@ kubectl get storageclass
 
 #kubectl get all -n kube-node-lease
 
-vim snapshot-controller.yml
+kubectl describe pv flask-volume
 
-kubectl apply -f snapshot-controller.yml
+kubectl get volumesnapshotclasses.snapshot.storage.k8s.io --all-namespaces
 
-kubectl get deployment snapshot-controller -n kube-system
+vim snapshot-class.yml
+
+kubectl apply -f snapshot-class.yml
+
+kubectl get volumesnapshotclass
+
+vim snapshot-content.yml
+
+kubectl apply -f snapshot-content.yml
+
+kubectl get volumesnapshotcontent
+
+vim vim volume-snapshot.yml
+
+kubectl apply -f volume-snapshot.yml
+
+kubectl get volumesnapshot
 
 kubectl get pods -l app=snapshot-controller -n kube-system
 
