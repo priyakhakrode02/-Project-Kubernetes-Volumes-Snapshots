@@ -106,3 +106,6 @@ kubectl apply -f snapshot-controller.yml
 
 kubectl get deployment snapshot-controller -n kube-system
 
+kubectl get pods -l app=snapshot-controller -n kube-system
+
+kubectl get pods -n kube-system    #verify the external snapshotter components are running correctly.
