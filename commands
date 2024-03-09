@@ -90,14 +90,19 @@ kubectl apply -f snapshot-storageclass.yaml
 
 kubectl get storageclass
 
-kubectl get crd
+#kubectl get crd
 
-kubectl get volumesnapshotclasses
+#kubectl get volumesnapshotclasses
 
-kubectl get pods -n kube-system
+#kubectl get pods -n kube-system
 
-kubectl get namespaces
+#kubectl get namespaces
 
-kubectl get all -n kube-node-lease
+#kubectl get all -n kube-node-lease
 
+vim snapshot-controller.yml
+
+kubectl apply -f snapshot-controller.yml
+
+kubectl get deployment snapshot-controller -n kube-system
 
