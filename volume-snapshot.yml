@@ -1,9 +1,8 @@
-apiVersion: snapshot.storage.k8s.io/v1beta1
+apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
   name: volume-snapshot
 spec:
+  volumeSnapshotClassName: snapshot-class
   source:
-    name: flask-volume
-    kind: PersistentVolumeClaim
-  snapshotClassName: csi-hostpath-snapclass
+    persistentVolumeClaimName: flask-claim
