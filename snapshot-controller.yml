@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snapshot-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snapshot-controller
+  template:
+    metadata:
+      labels:
+        app: snapshot-controller
+    spec: 
+      serviceAccountName: snapshot-controller
+      containers:
+        - name: snapshot-controller
+          image: k8s.gcr.io/sig-storage/snapshot-controller:v4.1.0
+          volumeMounts:
+            - mountPath: /tmp/csi-data-dir
+              name: csi-data-dir
+      volumes:
+        - name: csi-data-dir
+          emptyDir: {}
