@@ -88,6 +88,8 @@ curl -LO https://github.com/kubernetes-csi/external-snapshotter/releases/downloa
 
 kubectl apply -f snapshot-storageclass.yaml
 
+kubectl get storageclass
+
 kubectl get crd
 
 kubectl get volumesnapshotclasses
